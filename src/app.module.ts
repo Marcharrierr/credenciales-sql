@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { PropertysModule } from './propertys/propertys.module';
 
 
 @Module({
@@ -20,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
       password: process.env.MYSQL_PASSWORD,
       database: process.env.MYSQL_DATABASE,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
       ssl: process.env.MYSQL_SSL === "true",
       extra: {
         ssl:
@@ -32,6 +33,7 @@ import { AuthModule } from './auth/auth.module';
       },
     }),
     UsersModule,
+    PropertysModule,
   ],
   controllers: [],
   providers: [],

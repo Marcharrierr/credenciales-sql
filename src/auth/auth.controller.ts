@@ -28,18 +28,11 @@ export class AuthController {
         return this.authService.login(loginDto);
     }
 
-    @Get('profile')
-    @Auth(Role.USER)
-    profile(@ActiveUser() user: UserInterfaceActive) {
-        return this.authService.propiedadesProfile(user)
-    }
-
-    @Post('register')
-    register(
-        @Body() registerDto: RegisterDto,
-    ) {
-        return this.authService.register(registerDto);
-    }
+    // @Get('profile')
+    // @Auth(Role.USER)
+    // profile(@ActiveUser() user: UserInterfaceActive) {
+    //     return this.authService.propiedadesProfile(user)
+    // }
 
 
     @Get('check-token')

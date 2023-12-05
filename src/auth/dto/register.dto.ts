@@ -1,13 +1,14 @@
-import { Transform } from "class-transformer";
-import { IsEmail, IsNumberString, IsString, MaxLength, MinLength, Validate, ValidationArguments } from "class-validator";
+import { Transform, Type } from "class-transformer";
+import { IsEmail, IsInt, IsNumber, IsNumberString, IsString, IsUppercase, MaxLength, MinLength, Validate, ValidationArguments } from "class-validator";
 
 function IsValidDv(value: string, args: ValidationArguments) {
     // Verificar si es un número o una letra
-    if (/^[0-9kK]$/i.test(value)) {
-        return false;
+    if (/^[0-9K]$/i.test(value)) {
+        return true;
     }
-    return true;
+    return false;
 }
+
 
 export class RegisterDto {
 
@@ -21,13 +22,10 @@ export class RegisterDto {
     lastName: string;
 
     @Transform(({ value }) => value.trim())
-    @IsNumberString()
     @MinLength(6)
     rut: string;
 
     @Transform(({ value }) => value.trim())
-    @IsString()
-    @MaxLength(1)
     @Validate(IsValidDv)
     dv: string;
 
@@ -38,6 +36,13 @@ export class RegisterDto {
     @IsString()
     @MinLength(6)
     password: string;
+
+    @IsString()
+    rutEmpresa?: string;
+
+    @Type(() => Number)
+    client_id: number;
+
 
 
 }

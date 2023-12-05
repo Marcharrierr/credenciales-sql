@@ -41,11 +41,7 @@ export class User {
     @DeleteDateColumn()
     deletedAt: Date;
 
-
-    // @Column({ unique: true, nullable: true })
-    // rutEmpresa: string;
-
-    // @Column({ nullable: true })
-    // dvEmpresa: string;
+    @Column()
+    client_id: number;
 
 }
