@@ -8,17 +8,17 @@ export class User {
     @Column({ primary: true, generated: true })
     id: number;
 
-    @Column({ nullable: true })
-    name: string;
-
-    @Column({ nullable: true })
-    lastName: string;
-
     @Column({ unique: true, nullable: true })
     rut: string;
 
     @Column({ nullable: true })
     dv: string;
+
+    @Column({ nullable: true })
+    name: string;
+
+    @Column({ nullable: true })
+    lastName: string;
 
     @Column({ unique: true, nullable: true })
     email: string;
@@ -33,13 +33,10 @@ export class User {
     status: string;
 
     @CreateDateColumn()
-    createAt: Date;
+    created: Date;
 
     @UpdateDateColumn()
-    updateAt: Date;
-
-    @DeleteDateColumn()
-    deletedAt: Date;
+    modified: Date;
 
     @Column()
     client_id: number;

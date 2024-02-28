@@ -1,10 +1,14 @@
+import { MailModule } from './mail/mail.module';
 import { forwardRef, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { PropertysModule } from './propertys/propertys.module';
-
+import { PropertyServiceModule } from './property-service/property-service.module';
+import { MailService } from './mail/mail.service';
+import { ServicePropertysModule } from './service-propertys/service-propertys.module';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -32,10 +36,13 @@ import { PropertysModule } from './propertys/propertys.module';
             : null,
       },
     }),
+    MailModule,
     UsersModule,
     PropertysModule,
+    PropertyServiceModule,
+    ServicePropertysModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [MailService, AppService],
 })
 export class AppModule { }

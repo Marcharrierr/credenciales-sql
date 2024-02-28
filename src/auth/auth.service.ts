@@ -32,7 +32,7 @@ export class AuthService {
             throw new UnauthorizedException('Acceso denegado');
         }
         const payload = {
-            id: user.id
+            id: user.client_id
 
             // role: user.role 
         };
